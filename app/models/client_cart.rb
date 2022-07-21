@@ -1,0 +1,2 @@
+class ClientCart < ApplicationRecord
+end

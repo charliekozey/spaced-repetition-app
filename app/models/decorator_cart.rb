@@ -1,0 +1,2 @@
+class DecoratorCart < ApplicationRecord
+end

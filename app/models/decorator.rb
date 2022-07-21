@@ -1,0 +1,2 @@
+class Decorator < ApplicationRecord
+end
