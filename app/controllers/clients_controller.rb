@@ -22,6 +22,13 @@ class ClientsController < ApplicationController
     else
       render json: @client.errors, status: :unprocessable_entity
     end
+
+    if user.valid?
+      session[:client_id] = client.id
+      render json: user, status: :created
+    else
+      render json: { errors: user.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /clients/1
@@ -47,5 +54,6 @@ class ClientsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def client_params
       params.require(:client).permit(:display_name, :username, :email, :password_digest)
+      params.permit(:username, :password, :password_confirmation)
     end
 end
